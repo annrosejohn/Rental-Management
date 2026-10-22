@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-[#F7F5F3] text-[#392630] font-sans">
+
+  
+   <aside id="top-bar-sidebar" class="fixed left-0 top-0 z-40 flex h-screen w-64 -translate-x-full flex-col bg-[#392630] font-['DM_Sans'] text-[#F1E1E7] transition-transform sm:translate-x-0" aria-label="Sidebar">
+   <div class="flex h-full flex-col overflow-y-auto border-e border-white/10 bg-[#392630] px-3 py-5">
+      <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
+         <img src="./emera-home-line-icon-white-512.png" class="h-6 me-3" alt="Flowbite Logo" />
+         <span class="font-['Fraunces'] text-xl font-semibold tracking-tight text-white">Emera Homes</span>
+      </a>
+            <!-- <p class="mb-3 px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#BDAAB4]">
+        Main Menu
+      </p> -->
+      <ul class="space-y-2 font-medium">
+         <li>
+            <a href="dashboard.html" class="flex items-center gap-1 text-[13px] font-medium rounded-lg px-3 py-2.5 mt-5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/></svg>
+               <span class="ms-3">Dashboard</span>
+            </a>
+         </li>
+         <li>
+            <a href="reports.html" class="flex items-center gap-1 rounded-lg px-3 text-[13px] font-medium  py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Reports & Analytics</span>
+            </a>
+         </li>
+         <li>
+            <a href="property.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9M9 7h6m-7 3h8"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Properties</span>
+            </a>
+         </li>
+         <li>
+            <a href="maintenance.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Maintenance</span>
+            </a>
+         </li>
+         <li>
+            <a href="tenants.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Tenant">
+  <title>Tenant</title>
+  <path d="M3 11.5 12 3.5l9 8"/>
+  <path d="M5.5 10v10.5h13V10"/>
+  <circle cx="12" cy="12.5" r="2.5"/>
+  <path d="M8 20.5a4 4 0 0 1 8 0"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Tenants</span>
+            </a>
+         </li>
+         <li>
+            <a href="rentalapplication.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rental application">
+  <title>Rental application</title>
+  <path d="M6 3h8l4 4v14H6z"/>
+  <path d="M14 3v4h4"/>
+  <path d="M9 7.5h2.5"/>
+  <path d="M9 14l3-2.5 3 2.5"/>
+  <path d="M9.75 13.5V17h4.5v-3.5"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rental Applications</span>
+            </a>
+         </li>
+          <li>
+            <a href="payments.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rent payment">
+  <title>Rent payment</title>
+  <path d="M2.5 11 11 3.5 19.5 11"/>
+  <path d="M4.5 9.5v10h6.5"/>
+  <path d="M17.5 9.5V10"/>
+  <circle cx="17" cy="17" r="5"/>
+  <path d="M18.5 15.2h-2.3a1.2 1.2 0 0 0 0 2.4h1.6a1.2 1.2 0 0 1 0 2.4h-2.3"/>
+  <path d="M17 13.9v1.3M17 20v1.3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rent & Payments</span>
+            </a>
+         </li>
+          <li>
+            <a href="expenses.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expenses">
+  <title>Expenses</title>
+  <path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5-2 1.5z"/>
+  <path d="M9 8h6"/>
+  <path d="M9 12h6"/>
+  <path d="M9 16h3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Expenses</span>
+            </a>
+         </li>
+          <li>
+            <a href="lease.html" class="flex items-center gap-1  text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Lease agreement">
+  <title>Lease agreement</title>
+  <path d="M13 20H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v6"/>
+  <path d="M8 8h7"/>
+  <path d="M8 12h3"/>
+  <circle cx="17" cy="15" r="3.5"/>
+  <path d="M15.5 18l-.7 4 2.2-1.2 2.2 1.2-.7-4"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Leases & Agreements</span>
+            </a>
+         </li>
+          <ul class="space-y-2 font-medium border-t border-default pt-4 mt-4">
+         <li>
+            <a href="settings.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Settings">
+  <title>Settings</title>
+  <circle cx="12" cy="12" r="7"/>
+  <circle cx="12" cy="12" r="2.5"/>
+  <path d="M19 12h2.5M2.5 12H5M12 19v2.5M12 2.5V5"/>
+  <path d="M16.95 16.95l1.77 1.77M5.28 5.28l1.77 1.77M7.05 16.95l-1.77 1.77M18.72 5.28l-1.77 1.77"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Profile & Settings</span>
+            </a>
+         </li>
+      </ul>
+      <div id="alert-additional-content-1" class="rounded-xl border border-white/5 bg-[#4A3340] p-3.5 mt-10 pt-6" role="alert">
+         <div class="flex items-center justify-between">
+            <div class="flex items-center">
+               <svg class="w-4 h-4 shrink-0 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+               <span class="sr-only">Info</span>
+               <h3 class="text-xs font-semibold leading-5 text-white">7 leases end within 30 days</h3>
+            </div>
+            <button type="button" data-dismiss-target="#alert-additional-content-1" aria-label="Close" class=" -mx-1 -my-2 rounded focus:ring-2 focus:ring-brand-medium hover:bg-brand-soft inline-flex items-center justify-center h-8 w-8">
+               <span class="sr-only">Close</span>
+               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+            </button>
+         </div>
+         <div class="mt-1 mb-3 text-[11px] leading-4 text-[#D9C9D0]">
+            Send renewal requests early to avoid vacancies.
+         </div>
+         <button type="button" class="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#B77D91] px-3 py-2 text-xs font-semibold text-[#392630] transition-colors hover:bg-[#C994A7]">
+         Review Leases
+         </button>
+      </div>
+   </div>
+</aside>
+
+
+    
+
+   
+ <!-- Main Content -->
+      
+  <div class="min-h-screen sm:ml-60">
+        <!-- Top Navbar -->
+        
+        <header
+         class="sticky top-0 z-30 border-b border-gray-200 bg-white  px-4 py-4 sm:px-6 lg:px-8"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <!-- Page Name -->
+            <div><h1 style="display:block; visibility:visible; opacity:1; color:black; font-size:28px; font-weight:bold; position:relative; z-index:50;" class="font-['Fraunces'] font-semibold ">
+      Welcome back,Admin <p class="text-sm font-normal and text-[#7A6A70]">Here's what's happening with your properties today.</p>
+    </h1></div>
+
+            <!-- Search Bar -->
+            <div class="hidden flex-1 justify-center md:flex">
+              <div class="relative w-full max-w-md">
+                <span class="absolute left-3 top-2.5 text-gray-400">
+                  <i
+                    class="fa-solid fa-magnifying-glass"
+                    style="color: rgb(33, 34, 34)"
+                  ></i>
+                </span>
+                <input
+                  type="search"
+                  placeholder="Search anything..."
+                  class="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
+                />
+              </div>
+            </div>
+
+            <!-- Right Side Icons and Profile -->
+            <div class="flex shrink-0 items-center gap-3">
+              <!-- Settings Icon -->
+              <button
+                type="button"
+                aria-label="Settings"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-gear" style="color: rgb(30, 32, 31)"></i>
+              </button>
+
+              <!-- Notification Bell -->
+              <button
+                type="button"
+                aria-label="Notifications"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-bell" style="color: rgb(67, 54, 67)"></i>
+              </button>
+
+              <!-- Profile -->
+              <div class="flex items-center gap-3">
+                <div class="hidden text-right sm:block">
+                  <p class="text-sm font-semibold text-gray-800">
+                    Ruksana Admin 
+                  </p>
+                  <p class="text-xs text-gray-500">Property Manager</p>
+                </div>
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 font-bold text-amber-800"
+                >
+                  RA
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+</main>
+
+ <main class="mx-auto max-w-6xl px-2 pb-10 pt-4 sm:px-2">
+
+    <p class="mb-2 text-sm font-semibold uppercase tracking-wider text-[#1D7166]">
+      Account Settings
+    </p>
+
+    <h1 class="text-3xl font-bold text-[#39232F]">Security</h1>
+
+    <p class="mb-7 mt-2 text-[#817780]">
+      Manage your password and protect your home rental account.
+    </p>
+
+    <!-- Common Navigation Buttons -->
+    <div class="mb-6 flex flex-wrap gap-3 rounded-xl border border-[#E8E0D8] bg-white p-4 shadow-sm">
+
+      <a href="profile.html"
+        class="rounded-full border border-[#E8E0D8] px-6 py-3 text-sm font-semibold text-[#817780] hover:border-[#B77F96] hover:bg-[#F6F1EB]">
+        <i class="fa-solid fa-user mr-2"></i>Profile
+      </a>
+
+      <a href="preferences.html"
+        class="rounded-full border border-[#E8E0D8] px-6 py-3 text-sm font-semibold text-[#817780] hover:border-[#B77F96] hover:bg-[#F6F1EB]">
+        <i class="fa-solid fa-sliders mr-2"></i>Preferences
+      </a>
+
+      <a href="security.html"
+        class="rounded-full bg-[#B77F96] px-6 py-3 text-sm font-semibold text-[#39232F]">
+        <i class="fa-solid fa-shield-halved mr-2"></i>Security
+      </a>
+
+    </div>
+
+    <!-- Password Form -->
+    <form action="#" method="get"
+      class="rounded-2xl border border-[#E8E0D8] bg-white p-6 shadow-sm md:p-9">
+
+      <div class="mb-7 flex items-center gap-4">
+        <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F1E4EA] text-2xl text-[#39232F]">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-[#39232F]">Change Password</h2>
+          <p class="mt-1 text-sm text-[#817780]">
+            Use a strong password to protect your account.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-xl space-y-5">
+
+        <div>
+          <label for="currentPassword" class="mb-2 block text-sm font-medium text-[#39232F]">
+            Current Password
+          </label>
+
+          <input id="currentPassword" name="currentPassword" type="password"
+            placeholder="Enter current password"
+            class="w-full rounded-lg border border-[#E3DAD2] bg-white px-4 py-3 outline-none focus:border-[#1D7166] focus:ring-2 focus:ring-[#1D7166]/20">
+        </div>
+
+        <div>
+          <label for="newPassword" class="mb-2 block text-sm font-medium text-[#39232F]">
+            New Password
+          </label>
+
+          <input id="newPassword" name="newPassword" type="password"
+            placeholder="Enter new password"
+            class="w-full rounded-lg border border-[#E3DAD2] bg-white px-4 py-3 outline-none focus:border-[#1D7166] focus:ring-2 focus:ring-[#1D7166]/20">
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="mb-2 block text-sm font-medium text-[#39232F]">
+            Confirm New Password
+          </label>
+
+          <input id="confirmPassword" name="confirmPassword" type="password"
+            placeholder="Confirm new password"
+            class="w-full rounded-lg border border-[#E3DAD2] bg-white px-4 py-3 outline-none focus:border-[#1D7166] focus:ring-2 focus:ring-[#1D7166]/20">
+        </div>
+
+      </div>
+
+      <button type="submit"
+        class="mt-7 rounded-lg bg-[#1D7166] px-8 py-3 font-semibold text-white hover:bg-[#165B53]">
+        <i class="fa-solid fa-key mr-2"></i>Update Password
+      </button>
+
+    </form>
+
+    <!-- Sign Out Card -->
+    <section class="mt-7 rounded-2xl border border-[#E8E0D8] bg-white p-6 shadow-sm md:p-8">
+
+      <h2 class="text-xl font-bold text-[#B35A6A]">Sign Out</h2>
+
+      <p class="mt-2 text-sm text-[#817780]">
+        Sign out of your Home Rental account on this device.
+      </p>
+
+      <a href="login.html"
+        class="mt-5 inline-block rounded-lg border border-[#B77F96] px-6 py-3 font-semibold text-[#39232F] hover:bg-[#F1E4EA]">
+        <i class="fa-solid fa-right-from-bracket mr-2"></i>Sign Out
+      </a>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

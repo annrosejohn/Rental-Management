@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="dashboard.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+     <!---fontawesome----->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body class="bg-slate-100">
+    <aside id="top-bar-sidebar" class="fixed left-0 top-0 z-40 flex h-screen w-64 -translate-x-full flex-col bg-[#392630] font-['DM_Sans'] text-[#F1E1E7] transition-transform sm:translate-x-0" aria-label="Sidebar">
+   <div class="flex h-full flex-col overflow-y-auto border-e border-white/10 bg-[#392630] px-3 py-5">
+      <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
+         <img src="./emera-home-line-icon-white-512.png" class="h-6 me-3" alt="Flowbite Logo" />
+         <span class="font-['Fraunces'] text-xl font-semibold tracking-tight text-white">Emera Homes</span>
+      </a>
+            <!-- <p class="mb-3 px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#BDAAB4]">
+        Main Menu
+      </p> -->
+      <ul class="space-y-2 font-medium">
+         <li>
+            <a href="index.html" class="flex items-center gap-1 text-[13px] font-medium rounded-lg px-3 py-2.5 mt-5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/></svg>
+               <span class="ms-3">Dashboard</span>
+            </a>
+         </li>
+         <li>
+            <a href="reports.html" class="flex items-center gap-1 rounded-lg px-3 text-[13px] font-medium  py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Reports & Analytics</span>
+            </a>
+         </li>
+         <li>
+            <a href="property.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9M9 7h6m-7 3h8"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Properties</span>
+            </a>
+         </li>
+         <li>
+            <a href="maintenance.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Maintenance</span>
+            </a>
+         </li>
+         <li>
+            <a href="tenants.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Tenant">
+  <title>Tenant</title>
+  <path d="M3 11.5 12 3.5l9 8"/>
+  <path d="M5.5 10v10.5h13V10"/>
+  <circle cx="12" cy="12.5" r="2.5"/>
+  <path d="M8 20.5a4 4 0 0 1 8 0"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Tenants</span>
+            </a>
+         </li>
+         <li>
+            <a href="rentalapplication.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rental application">
+  <title>Rental application</title>
+  <path d="M6 3h8l4 4v14H6z"/>
+  <path d="M14 3v4h4"/>
+  <path d="M9 7.5h2.5"/>
+  <path d="M9 14l3-2.5 3 2.5"/>
+  <path d="M9.75 13.5V17h4.5v-3.5"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rental Applications</span>
+            </a>
+         </li>
+          <li>
+            <a href="payments.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rent payment">
+  <title>Rent payment</title>
+  <path d="M2.5 11 11 3.5 19.5 11"/>
+  <path d="M4.5 9.5v10h6.5"/>
+  <path d="M17.5 9.5V10"/>
+  <circle cx="17" cy="17" r="5"/>
+  <path d="M18.5 15.2h-2.3a1.2 1.2 0 0 0 0 2.4h1.6a1.2 1.2 0 0 1 0 2.4h-2.3"/>
+  <path d="M17 13.9v1.3M17 20v1.3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rent & Payments</span>
+            </a>
+         </li>
+          <li>
+            <a href="expenses.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expenses">
+  <title>Expenses</title>
+  <path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5-2 1.5z"/>
+  <path d="M9 8h6"/>
+  <path d="M9 12h6"/>
+  <path d="M9 16h3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Expenses</span>
+            </a>
+         </li>
+          <li>
+            <a href="lease.html" class="flex items-center gap-1  text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Lease agreement">
+  <title>Lease agreement</title>
+  <path d="M13 20H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v6"/>
+  <path d="M8 8h7"/>
+  <path d="M8 12h3"/>
+  <circle cx="17" cy="15" r="3.5"/>
+  <path d="M15.5 18l-.7 4 2.2-1.2 2.2 1.2-.7-4"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Leases & Agreements</span>
+            </a>
+         </li>
+          <ul class="space-y-2 font-medium border-t border-default pt-4 mt-4">
+         <li>
+            <a href="settings.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Settings">
+  <title>Settings</title>
+  <circle cx="12" cy="12" r="7"/>
+  <circle cx="12" cy="12" r="2.5"/>
+  <path d="M19 12h2.5M2.5 12H5M12 19v2.5M12 2.5V5"/>
+  <path d="M16.95 16.95l1.77 1.77M5.28 5.28l1.77 1.77M7.05 16.95l-1.77 1.77M18.72 5.28l-1.77 1.77"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Profile & Settings</span>
+            </a>
+         </li>
+      </ul>
+      <div id="alert-additional-content-1" class="rounded-xl border border-white/5 bg-[#4A3340] p-3.5 mt-10 pt-6" role="alert">
+         <div class="flex items-center justify-between">
+            <div class="flex items-center">
+               <svg class="w-4 h-4 shrink-0 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+               <span class="sr-only">Info</span>
+               <h3 class="text-xs font-semibold leading-5 text-white">7 leases end within 30 days</h3>
+            </div>
+            <button type="button" data-dismiss-target="#alert-additional-content-1" aria-label="Close" class=" -mx-1 -my-2 rounded focus:ring-2 focus:ring-brand-medium hover:bg-brand-soft inline-flex items-center justify-center h-8 w-8">
+               <span class="sr-only">Close</span>
+               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+            </button>
+         </div>
+         <div class="mt-1 mb-3 text-[11px] leading-4 text-[#D9C9D0]">
+            Send renewal requests early to avoid vacancies.
+         </div>
+         <button type="button" class="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#B77D91] px-3 py-2 text-xs font-semibold text-[#392630] transition-colors hover:bg-[#C994A7]">
+         Review Leases
+         </button>
+      </div>
+   </div>
+</aside>
+
+
+    
+
+   
+ <!-- Main Content -->
+      <main class="min-h-screen flex-1 sm:ml-64">
+        <!-- Top Navbar -->
+        
+        <header
+         class="sticky top-0 z-30 border-b border-gray-200 bg-white  px-4 py-4 sm:px-6 lg:px-8"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <!-- Page Name -->
+            <div><h1 style="display:block; visibility:visible; opacity:1; color:black; font-size:28px; font-weight:bold; position:relative; z-index:50;" class="font-['Fraunces'] font-semibold ">
+      Welcome back,Admin <p class="text-sm font-normal and text-[#7A6A70]">Here's what's happening with your properties today.</p>
+    </h1></div>
+
+            <!-- Search Bar -->
+            <div class="hidden flex-1 justify-center md:flex">
+              <div class="relative w-full max-w-md">
+                <span class="absolute left-3 top-2.5 text-gray-400">
+                  <i
+                    class="fa-solid fa-magnifying-glass"
+                    style="color: rgb(33, 34, 34)"
+                  ></i>
+                </span>
+                <input
+                  type="search"
+                  placeholder="Search anything..."
+                  class="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
+                />
+              </div>
+            </div>
+
+            <!-- Right Side Icons and Profile -->
+            <div class="flex shrink-0 items-center gap-3">
+              <!-- Settings Icon -->
+              <button
+                type="button"
+                aria-label="Settings"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-gear" style="color: rgb(30, 32, 31)"></i>
+              </button>
+
+              <!-- Notification Bell -->
+              <button
+                type="button"
+                aria-label="Notifications"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-bell" style="color: rgb(67, 54, 67)"></i>
+              </button>
+
+              <!-- Profile -->
+              <div class="flex items-center gap-3">
+                <div class="hidden text-right sm:block">
+                  <p class="text-sm font-semibold text-gray-800">
+                    Ruksana Admin 
+                  </p>
+                  <p class="text-xs text-gray-500">Property Manager</p>
+                </div>
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 font-bold text-amber-800"
+                >
+                  RA
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+ <section class=" p-6 bg-[#F7F2EC] font-['DM_Sans']">
+    <div class="flex justify-between">
+      <!-- <div class="">
+         <h1 class="font-['Fraunces'] font-semibold text-3xl">Welcome back,Admin </h1>
+         <p>Here's what's happening with your rental portfolio today.</p>
+      </div> -->
+      <!-- <div class=""><button>Download Report</button></div> -->
+   </div>
+    <!-- Header -->
+        <div
+          class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-4 pb-4 pt-0 sm:px-6 sm:pb-8 sm:pt-8"
+        >
+          <div>
+            <p class="text-sm text-gray-500">Workspace / Dashboard</p>
+
+            <h2 class="mt-2 text-3xl font-bold text-gray-800">
+              Dashboard Overview
+            </h2>
+
+            <p class="mt-2 text-gray-500">
+              View your properties, payments, and latest updates.
+            </p>
+          </div>
+
+          <button
+            class="rounded-lg bg-[#392630] px-5 py-3 font-semibold text-white hover:bg-[#B77D91]"
+          >
+            Download Report
+          </button>
+        </div>
+
+
+    <!-- 4 cards at the top  -->
+
+<div class="mt-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 items-start ">
+ <div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"> <rect width="48" height="48" rx="12" fill="#EFE6DA"/> <g transform="translate(12 12)" stroke="#2B2326" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"> <path d="M3 10.5 12 3l9 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9.5 21v-6h5v6"/> </g></svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Total Properties</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">24</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+4 this quarter</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+    <path d="M3 21h18"/>
+    <path d="M9.5 8h1M13.5 8h1M9.5 12h1M13.5 12h1"/>
+    <path d="M10 21v-4h4v4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Occupied Units</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">41 <span class="font-normal font-normal">/46</span></h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">89% occupancy</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M6 12h.01M18 12h.01"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Monthly rent collected</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">45.80 Lakhs</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+6.2% vs september</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#F3E1E6"/>
+  <g transform="translate(12 12)" stroke="#B5707F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>
+    <path d="m15 5 4 4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Pending Maintenance</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">7</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+3 marked urgent</p>
+   </div>
+</div>
+</div>
+
+<!-- bar chart  -->
+<div class="w-full flex">
+ <div class="mt-5 w-full lg:w-[70%]">
+ <div class="w-full rounded-2xl border border-[#D9C9D0] bg-white p-4 md:p-5">
+  
+  <div>
+    <p class="font-['Fraunces'] mb-6 text-lg font-semibold text-[#392630]">Income vs Expense</p>
+  </div>
+  <div id="bar-chart"></div> 
+ </div>
+</div>
+
+<!-- pie chart  -->
+
+<div class="mt-5 ml-4 w-[32%] shrink-0">   
+<div class="w-full rounded-2xl border border-[#D9C9D0] bg-white p-4 md:p-5 shadow-sm">
+  
+<div class=" flex items-center justify-between ">
+  <div class="flex justify-center items-center">
+    <h5 class="font-['Fraunces'] text-lg font-semibold text-[#392630]">Property Status</h5>
+    <div data-popover id="traffic-info-2" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
+      <div data-popper-arrow>
+
+      </div>
+    </div>
+  </div>
+ </div>
+
+  <!-- Donut Chart -->
+<div class="py-5" id="donut-chart"></div>
+ </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="mt-5 grid grid-cols-1 items-start gap-4 xl:grid-cols-3">
+   <div class="min-w-0 rounded-2xl border border-[#D9C9D0] bg-white p-4 ">
+
+  <h2 class="mb-4 font-['Fraunces'] text-lg font-semibold text-[#392630]">
+    Maintenance Requests
+  </h2>
+
+  <div class="space-y-2 mb-2">
+
+<a href="#" class="flex items-start gap-3 rounded-2xl border border-[#D9C9D0] bg-white p-2 shadow-sm">
+    <img class="h-24 w-24 shrink-0 rounded-lg object-cover" src="https://preview.redd.it/how-to-handle-aftermath-of-water-leak-in-kitchen-ceiling-v0-fnno5s6sssce1.jpg?width=640&crop=smart&auto=webp&s=23186df6af25bf3387db2a7b355e15a630e835a2" alt="">
+    <div class="flex flex-col justify-between md:p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-heading">water leakage in kitchen sealing.</h5>
+        
+        <div>
+            <span class="mt-2 inline-block text-xs font-medium text-[#176B60]">
+  View request →
+</span>
+        </div>
+    </div>
+</a>
+
+<a href="#" class="flex items-start gap-3 rounded-2xl border border-[#D9C9D0] bg-white p-2 shadow-sm">
+    <img class="h-24 w-24 shrink-0 rounded-lg object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGC_7KkHy_nJGW3QzSwRnjQCBgW-yoGB6B44z0VoDDMDEF2jKj5zyWwpU&s=10" alt="">
+    <div class="flex flex-col justify-between md:p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-heading">Corridor light not working.</h5>
+       
+        <div>
+            <span class="mt-2 inline-block text-xs font-medium text-[#176B60]">
+  View request →
+</span>
+        </div>
+    </div>
+</a>
+
+<a href="#" class="flex items-start gap-3 rounded-2xl border border-[#D9C9D0] bg-white p-2 shadow-sm">
+    <img class="h-24 w-24 shrink-0 rounded-lg object-cover" src="https://preview.redd.it/window-lock-broken-and-now-stuck-shut-i-suppose-ill-need-to-v0-6sndmeyubdjf1.jpeg?auto=webp&s=07535d6a9467ac52fdd087860ec970d7a25d163f" alt="">
+    <div class="flex flex-col justify-between md:p-4 leading-normal">
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-heading">broken window locks.</h5>
+        
+        <div>
+            <span class="mt-2 inline-block text-xs font-medium text-[#176B60]">
+  View request →
+</span>
+        </div>
+    </div>
+</a>
+
+   </div></div>
+
+<div class="min-w-0 xl:col-span-2">
+
+ 
+      
+<section class="overflow-hidden rounded-2xl border border-[#D9C9D0] bg-white shadow-sm">
+
+    <div class="flex flex-wrap items-center justify-between gap-4 p-5">
+        <div>
+            <h2 class="font-['Fraunces'] text-lg font-semibold text-[#392630]">Recent Rent Payments</h2>
+            <p class="mt-1 text-xs text-[#7A6A70]">Latest five transactions</p>
+        </div>
+
+        <div class="relative w-full sm:w-64">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-[#7A6A70]"fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="11" cy="11" r="7" stroke-width="2"/>
+                    <path stroke-width="2" stroke-linecap="round" d="m16 16 4 4"/>
+                </svg>
+            </div>
+            <input type="text" class="w-full rounded-lg border border-[#D9C9D0] bg-[#F7F2EC] py-2 pl-9 pr-3 text-sm text-[#392630] placeholder:text-[#7A6A70] focus:outline-none focus:ring-1 focus:ring-[#B77D91]" placeholder="Search payments...">
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-[#7A6A70]">
+            <thead class="bg-gray-50 text-xs uppercase text-text-[#7A6A70] border-y border-gray-200">
+                <tr>
+                    <th class="px-5 py-3 font-semibold">Tenant</th>
+                    <th class="px-5 py-3 font-semibold">Property</th>
+                    <th class="px-5 py-3 font-semibold">Status</th>
+                    <th class="px-5 py-3 font-semibold">Amount</th>
+                    <th class="px-5 py-3 font-semibold">Date</th>
+                    <th class="px-5 py-3 font-semibold text-right">Action</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y divide-[#EFE6DA]">
+                <tr class="hover:bg-[#F7F2EC]">
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">Anjali Nair</td>
+                    <td class="px-5 py-4 whitespace-nowrap">Lakeview Residency, A-204</td>
+                    <td class="px-5 py-4">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Paid
+                        </span>
+                    </td>
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">₹18,500</td>
+                    <td class="px-5 py-4 whitespace-nowrap">15 Oct 2026</td>
+                    <td class="px-5 py-4 text-right"><a href="#" class="font-medium text-[#176B60] hover:underline">View</a></td>
+                </tr>
+
+                <tr class="hover:bg-[#F7F2EC]">
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">Rahul Varghese</td>
+                    <td class="px-5 py-4 whitespace-nowrap">Marina Heights, B-1102</td>
+                    <td class="px-5 py-4">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Paid
+                        </span>
+                    </td>
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">₹32,000</td>
+                    <td class="px-5 py-4 whitespace-nowrap">14 Oct 2026</td>
+                    <td class="px-5 py-4 text-right"><a href="#" class="font-medium text-[#176B60] hover:underline">View</a></td>
+                </tr>
+
+                <tr class="hover:bg-[#F7F2EC]">
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">Meera Krishnan</td>
+                    <td class="px-5 py-4 whitespace-nowrap">Palm Grove Villas, V-07</td>
+                    <td class="px-5 py-4">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Pending
+                        </span>
+                    </td>
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">₹45,000</td>
+                    <td class="px-5 py-4 whitespace-nowrap">20 Oct 2026</td>
+                    <td class="px-5 py-4 text-right"><a href="#" class="font-medium text-[#176B60] hover:underline">View</a></td>
+                </tr>
+
+                <tr class="hover:bg-[#F7F2EC]">
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">Joseph Thomas</td>
+                    <td class="px-5 py-4 whitespace-nowrap">Green Arcade, Shop 3</td>
+                    <td class="px-5 py-4">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>Overdue
+                        </span>
+                    </td>
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">₹27,500</td>
+                    <td class="px-5 py-4 whitespace-nowrap">05 Oct 2026</td>
+                    <td class="px-5 py-4 text-right"><a href="#" class="font-medium text-[#176B60] hover:underline">View</a></td>
+                </tr>
+
+                <tr class="hover:bg-[#F7F2EC]">
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">Sneha Pillai</td>
+                    <td class="px-5 py-4 whitespace-nowrap">Sunrise Apartments, C-305</td>
+                    <td class="px-5 py-4">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Paid
+                        </span>
+                    </td>
+                    <td class="px-5 py-4 font-semibold text-[#392630] whitespace-nowrap">₹16,800</td>
+                    <td class="px-5 py-4 whitespace-nowrap">10 Oct 2026</td>
+                    <td class="px-5 py-4 text-right"><a href="#" class="font-medium text-[#176B60] hover:underline">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex items-center justify-between gap-3 p-4 border-t border-[#EFE6DA]">
+        <p class="text-sm text-[#7A6A70]">Showing 5 transactions</p>
+        <a href="#" class="text-sm font-semibold text-[#176B60] hover:underline whitespace-nowrap">View all payments →</a>
+    </div>
+
+</section>
+   </div>
+
+ <div class="mt-5 grid w-full grid-cols-1 gap-4 lg:grid-cols-[3fr_1fr_1fr]">
+  <!-- Quick Actions -->
+   <div class="rounded-2xl border border-[#D9C9D0] bg-white p-4 shadow-s w-120" >
+    <h2 class="mb-4 font-['Fraunces'] text-lg font-semibold text-[#392630]">
+  Quick Actions
+</h2>
+<div class="grid grid-cols-2 gap-2 lg:grid-cols-4">
+  <a href="properties.html" 
+   class="flex flex-row items-center justify-center gap-2 rounded-xl bg-[#EFE6DA] px-4 py-3 text-sm font-medium text-[#392630] hover:bg-[#E1D4DA]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32"  class="h-8 w-8 shrink-0" fill="none" stroke="#2B1420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Add Property">
+  <title>Add Property</title>
+  <path d="M8 29 L32 7 L56 29 V52 a5 5 0 0 1 -5 5 H13 a5 5 0 0 1 -5 -5 Z"/>
+  <path d="M25 57 V38 a3 3 0 0 1 3 -3 H36 a3 3 0 0 1 3 3 V57"/>
+</svg>
+  Add Property
+</a>
+<a href="properties.html"
+   class="flex flex-row items-center justify-center gap-2 rounded-xl bg-[#EFE6DA] px-4 py-3 text-sm font-medium text-[#392630] hover:bg-[#E1D4DA]">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" class="h-8 w-8 shrink-0" height="32" fill="none" stroke="#2B1420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Add Tenant">
+  <title>Add Tenant</title>
+  <circle cx="24" cy="20" r="10"/>
+  <path d="M4 54 v-3 a15 15 0 0 1 15 -15 h10 a15 15 0 0 1 15 15 v3"/>
+  <path d="M42 11 a10 10 0 0 1 0 19"/>
+  <path d="M50 37 a15 15 0 0 1 10 14 v3"/>
+</svg>
+  Add Tenant
+</a>
+<a href="payments.html"
+   class="flex flex-row items-center justify-center gap-2 rounded-xl bg-[#EFE6DA] px-4 py-3 text-sm font-medium text-[#392630] hover:bg-[#E1D4DA]"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 shrink-0" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="#2B1420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Record Payment">
+  <title>Record Payment</title>
+  <path d="M14 6 H38 L52 20 V54 a4 4 0 0 1 -4 4 H14 a4 4 0 0 1 -4 -4 V10 a4 4 0 0 1 4 -4 Z"/>
+  <path d="M38 6 V18 a2 2 0 0 0 2 2 H52"/>
+  <path d="M38 31 h-10 a5 5 0 0 0 0 10 h5 a5 5 0 0 1 0 10 h-11 M31 25 v6 M31 51 v6" stroke-width="3"/>
+</svg>
+  Record Payment
+</a>
+<a href="./reports.html"
+   class="flex flex-row items-center justify-center gap-2 rounded-xl bg-[#EFE6DA] px-4 py-3 text-sm font-medium text-[#392630] hover:bg-[#E1D4DA]"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 shrink-0" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="#2B1420" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="View Reports">
+  <title>View Reports</title>
+  <rect x="8" y="34" width="12" height="22" rx="2"/>
+  <rect x="26" y="20" width="12" height="36" rx="2"/>
+  <rect x="44" y="6" width="12" height="50" rx="2"/>
+</svg>
+ View Reports
+</a>
+</div>
+   </div>
+  <!-- Upcoming Events -->
+   <div class="w-228">
+    <div class="rounded-2xl border border-[#D9C9D0] bg-white p-4 shadow-sm lg:col-span-2">
+  <h2 class="mb-4 font-['Fraunces'] text-lg font-semibold text-[#392630]">
+    Upcoming Events
+  </h2>
+
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-5">
+
+    <div class="rounded-xl  p-3">
+      <p class="text-xs bg-[#f9e3ea] text-[#7A6A70]">24 October · 10 AM</p>
+      <p class="mt-1 text-sm font-semibold text-[#392630]">
+        Property Inspection
+      </p>
+      <p class="mt-1 text-xs text-[#7A6A70]">Maple Heights</p>
+    </div>
+
+    
+
+    <div class="rounded-xl  p-3">
+      <p class="text-xs bg-[#f9e3ea] text-[#7A6A70]">27 October · 11 AM</p>
+      <p class="mt-1 text-sm font-semibold text-[#392630]">
+        Tenant Move-in
+      </p>
+      <p class="mt-1 text-xs text-[#7A6A70]">Oakwood Villa · Unit 204</p>
+    </div>
+
+    <div class="rounded-xl  p-3">
+      <p class="text-xs bg-[#f9e3ea] text-[#7A6A70]">30 October · 2 PM</p>
+      <p class="mt-1 text-sm font-semibold text-[#392630]">
+        Lease Renewal
+      </p>
+      <p class="mt-1 text-xs text-[#7A6A70]">Lakeview Residency</p>
+    </div>
+
+    <div class="rounded-xl p-3">
+      <p class="text-xs text-[#7A6A70] bg-[#f9e3ea]">1 November · 8 AM</p>
+      <p class="mt-1 text-sm font-semibold text-[#392630]">
+        Property Inspection
+      </p>
+      <p class="mt-1 text-xs text-[#7A6A70]">Maple Heights</p>
+    </div>
+
+<div class="rounded-xl  p-3">
+      <p class="text-xs text-[#7A6A70] bg-[#f9e3ea]">2 November · 11 AM</p>
+      <p class="mt-1 text-sm font-semibold text-[#392630]">
+        Tenant Move-out
+      </p>
+      <p class="mt-1 text-xs text-[#7A6A70]">Oakwood Villa · Unit 204</p>
+    </div>
+
+  </div>
+</div>
+   </div>
+  <!-- Actions Needed -->
+</div>
+
+   </div>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

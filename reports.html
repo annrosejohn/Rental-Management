@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="report.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+     <!---fontawesome----->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body class="bg-slate-100">
+    <aside id="top-bar-sidebar" class="fixed left-0 top-0 z-40 flex h-screen w-64 -translate-x-full flex-col bg-[#392630] font-['DM_Sans'] text-[#F1E1E7] transition-transform sm:translate-x-0" aria-label="Sidebar">
+   <div class="flex h-full flex-col overflow-y-auto border-e border-white/10 bg-[#392630] px-3 py-5">
+      <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
+         <img src="./emera-home-line-icon-white-512.png" class="h-6 me-3" alt="Flowbite Logo" />
+         <span class="font-['Fraunces'] text-xl font-semibold tracking-tight text-white">Emera Homes</span>
+      </a>
+            <!-- <p class="mb-3 px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#BDAAB4]">
+        Main Menu
+      </p> -->
+      <ul class="space-y-2 font-medium">
+         <li>
+            <a href="index.html" class="flex items-center gap-1 text-[13px] font-medium rounded-lg px-3 py-2.5 mt-5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/></svg>
+               <span class="ms-3">Dashboard</span>
+            </a>
+         </li>
+         <li>
+            <a href="reports.html" class="flex items-center gap-1 rounded-lg px-3 text-[13px] font-medium  py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Reports & Analytics</span>
+            </a>
+         </li>
+         <li>
+            <a href="property.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9M9 7h6m-7 3h8"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Properties</span>
+            </a>
+         </li>
+         <li>
+            <a href="maintenance.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Maintenance</span>
+            </a>
+         </li>
+         <li>
+            <a href="tenants.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Tenant">
+  <title>Tenant</title>
+  <path d="M3 11.5 12 3.5l9 8"/>
+  <path d="M5.5 10v10.5h13V10"/>
+  <circle cx="12" cy="12.5" r="2.5"/>
+  <path d="M8 20.5a4 4 0 0 1 8 0"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Tenants</span>
+            </a>
+         </li>
+         <li>
+            <a href="rentalapplication.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rental application">
+  <title>Rental application</title>
+  <path d="M6 3h8l4 4v14H6z"/>
+  <path d="M14 3v4h4"/>
+  <path d="M9 7.5h2.5"/>
+  <path d="M9 14l3-2.5 3 2.5"/>
+  <path d="M9.75 13.5V17h4.5v-3.5"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rental Applications</span>
+            </a>
+         </li>
+          <li>
+            <a href="payments.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rent payment">
+  <title>Rent payment</title>
+  <path d="M2.5 11 11 3.5 19.5 11"/>
+  <path d="M4.5 9.5v10h6.5"/>
+  <path d="M17.5 9.5V10"/>
+  <circle cx="17" cy="17" r="5"/>
+  <path d="M18.5 15.2h-2.3a1.2 1.2 0 0 0 0 2.4h1.6a1.2 1.2 0 0 1 0 2.4h-2.3"/>
+  <path d="M17 13.9v1.3M17 20v1.3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Rent & Payments</span>
+            </a>
+         </li>
+          <li>
+            <a href="expenses.html" class="flex items-center text-[13px] font-medium  gap-1 rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expenses">
+  <title>Expenses</title>
+  <path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5-2 1.5z"/>
+  <path d="M9 8h6"/>
+  <path d="M9 12h6"/>
+  <path d="M9 16h3"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Expenses</span>
+            </a>
+         </li>
+          <li>
+            <a href="lease.html" class="flex items-center gap-1  text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Lease agreement">
+  <title>Lease agreement</title>
+  <path d="M13 20H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v6"/>
+  <path d="M8 8h7"/>
+  <path d="M8 12h3"/>
+  <circle cx="17" cy="15" r="3.5"/>
+  <path d="M15.5 18l-.7 4 2.2-1.2 2.2 1.2-.7-4"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Leases & Agreements</span>
+            </a>
+         </li>
+          <ul class="space-y-2 font-medium border-t border-default pt-4 mt-4">
+         <li>
+            <a href="settings.html" class="flex items-center gap-1 text-[13px] font-medium  rounded-lg px-3 py-2.5 text-[#E1D4DA] transition-colors hover:bg-[#B77D91] hover:text-[#392630]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.75"
+     stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Settings">
+  <title>Settings</title>
+  <circle cx="12" cy="12" r="7"/>
+  <circle cx="12" cy="12" r="2.5"/>
+  <path d="M19 12h2.5M2.5 12H5M12 19v2.5M12 2.5V5"/>
+  <path d="M16.95 16.95l1.77 1.77M5.28 5.28l1.77 1.77M7.05 16.95l-1.77 1.77M18.72 5.28l-1.77 1.77"/>
+</svg>
+               <span class="flex-1 ms-3 whitespace-nowrap">Profile & Settings</span>
+            </a>
+         </li>
+      </ul>
+      <div id="alert-additional-content-1" class="rounded-xl border border-white/5 bg-[#4A3340] p-3.5 mt-10 pt-6" role="alert">
+         <div class="flex items-center justify-between">
+            <div class="flex items-center">
+               <svg class="w-4 h-4 shrink-0 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+               <span class="sr-only">Info</span>
+               <h3 class="text-xs font-semibold leading-5 text-white">7 leases end within 30 days</h3>
+            </div>
+            <button type="button" data-dismiss-target="#alert-additional-content-1" aria-label="Close" class=" -mx-1 -my-2 rounded focus:ring-2 focus:ring-brand-medium hover:bg-brand-soft inline-flex items-center justify-center h-8 w-8">
+               <span class="sr-only">Close</span>
+               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+            </button>
+         </div>
+         <div class="mt-1 mb-3 text-[11px] leading-4 text-[#D9C9D0]">
+            Send renewal requests early to avoid vacancies.
+         </div>
+         <button type="button" class="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#B77D91] px-3 py-2 text-xs font-semibold text-[#392630] transition-colors hover:bg-[#C994A7]">
+         Review Leases
+         </button>
+      </div>
+   </div>
+</aside>
+
+
+    
+
+   
+ <!-- Main Content -->
+      <main class="min-h-screen flex-1 sm:ml-64 bg-[#F7F2EC] font-['DM_Sans']">
+        <!-- Top Navbar -->
+        
+        <header
+         class="sticky top-0 z-30 border-b border-gray-200 bg-white  px-4 py-4 sm:px-6 lg:px-8"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <!-- Page Name -->
+            <div><h1 style="display:block; visibility:visible; opacity:1; color:black; font-size:28px; font-weight:bold; position:relative; z-index:50;" class="font-['Fraunces'] font-semibold ">
+      Welcome back,Admin <p class="text-sm font-normal and text-[#7A6A70]">Here's what's happening with your properties today.</p>
+    </h1></div>
+
+            <!-- Search Bar -->
+            <div class="hidden flex-1 justify-center md:flex">
+              <div class="relative w-full max-w-md">
+                <span class="absolute left-3 top-2.5 text-gray-400">
+                  <i
+                    class="fa-solid fa-magnifying-glass"
+                    style="color: rgb(33, 34, 34)"
+                  ></i>
+                </span>
+                <input
+                  type="search"
+                  placeholder="Search anything..."
+                  class="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
+                />
+              </div>
+            </div>
+
+            <!-- Right Side Icons and Profile -->
+            <div class="flex shrink-0 items-center gap-3">
+              <!-- Settings Icon -->
+              <button
+                type="button"
+                aria-label="Settings"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-gear" style="color: rgb(30, 32, 31)"></i>
+              </button>
+
+              <!-- Notification Bell -->
+              <button
+                type="button"
+                aria-label="Notifications"
+                class="rounded-xl border border-gray-200 p-2.5 text-gray-600 hover:bg-gray-100"
+              >
+                <i class="fa-solid fa-bell" style="color: rgb(67, 54, 67)"></i>
+              </button>
+
+              <!-- Profile -->
+              <div class="flex items-center gap-3">
+                <div class="hidden text-right sm:block">
+                  <p class="text-sm font-semibold text-gray-800">
+                    Ruksana Admin 
+                  </p>
+                  <p class="text-xs text-gray-500">Property Manager</p>
+                </div>
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 font-bold text-amber-800"
+                >
+                  RA
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+
+<section>
+   <!-- heading  -->
+   <div
+          class=" flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-4 pb-4 pt-0 sm:px-6 sm:pb-8 sm:pt-8"
+        >
+          <div>
+            <p class="text-sm text-gray-500">Workspace / Reports & Analytics</p>
+
+            <h2 class="mt-2 text-3xl font-bold text-gray-800">
+              Reports & Analytics
+            </h2>
+
+            <p class="mt-2 text-gray-500">
+            Track rental income, occupancy trends, and property performance.
+            </p>
+          </div>
+
+          <button
+            class="rounded-lg bg-[#392630] px-5 py-3 font-semibold text-white hover:bg-[#B77D91]"
+          >
+            Download Report
+          </button>
+        </div>
+
+
+        <!-- tabs  -->
+         
+
+<div class="mb-4 border-b border-default mb-6 border-b border-[#E6DCCF]">
+    <ul class="flex gap-2 overflow-x-auto pb-3 text-sm font-medium" id="default-tab" data-tabs-toggle="#default-tab-content"  data-tabs-active-classes="text-[#176B60]"
+  data-tabs-inactive-classes="bg-transparent text-[#7A6A70] hover:bg-[#EFE6DA] hover:text-[#392630]" role="tablist">
+        <li class="me-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 rounded-t-base ml-120" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Property</button>
+        </li>
+        <li class="me-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 rounded-t-base hover:text-fg-brand hover:border-brand" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Revenue</button>
+        </li>
+        <li class="me-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 rounded-t-base hover:text-fg-brand hover:border-brand" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Tenants</button>
+        </li>
+        <li role="presentation">
+            <button class="inline-block p-4 border-b-2 rounded-t-base hover:text-fg-brand hover:border-brand" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Expenses</button>
+        </li>
+    </ul>
+</div>
+<div id="default-tab-content">
+    <div class="hidden p-4 rounded-base bg-neutral-secondary-soft" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <!-- 4 cards at the top  -->
+
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 items-start ">
+ <div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"> <rect width="48" height="48" rx="12" fill="#EFE6DA"/> <g transform="translate(12 12)" stroke="#2B2326" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"> <path d="M3 10.5 12 3l9 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9.5 21v-6h5v6"/> </g></svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Total Properties</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">24</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+4 this quarter</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+    <path d="M3 21h18"/>
+    <path d="M9.5 8h1M13.5 8h1M9.5 12h1M13.5 12h1"/>
+    <path d="M10 21v-4h4v4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Occupied Units</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">41 <span class="font-normal font-normal">/46</span></h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">89% occupancy</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M6 12h.01M18 12h.01"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Vacant Units</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">30</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">Avg 12 days vacant</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#F3E1E6"/>
+  <g transform="translate(12 12)" stroke="#B5707F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>
+    <path d="m15 5 4 4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Top Property</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">Marina Heights</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">₹48.2L revenue</p>
+   </div>
+</div>
+</div>
+
+<!-- table  -->
+
+
+
+<div class="relative overflow-x-auto rounded-2xl border border-[#E6DCCF] bg-white shadow-sm mt-5">
+    <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4">
+        <div class="flex">
+         <h1 class="font-['Fraunces'] text-xl font-semibold text-[#392630]">Property Performance<p class="mt-1  text-sm text-[#7A6A70]">Property ranked by occupancy</p></h1>
+        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-flex items-center justify-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none gap-10 ml-209 h-10 mt-2" type="button">
+            Date Range
+            <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden bg-[#faf8f5] border border-default-medium rounded-base shadow-lg w-32">
+            <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">This month</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 3 months</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 6 months</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 text-fg-danger hover:bg-neutral-tertiary-medium rounded">Last 12 months</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+        <label for="input-group-1" class="sr-only">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+            </div>
+            <input type="text" id="input-group-1" class="block w-full max-w-96 ps-9 pe-3 py-2 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search">
+        </div>
+    </div>
+    <table class="w-full text-left text-sm text-[#392630]">
+        <thead class="border-y border-[#E6DCCF] bg-[#EFE6DA] text-sm text-[#392630]">
+            <tr>
+                
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Property Name
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                   Type
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Occupancy
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+               
+                <th scope="row" class="flex items-center px-6 py-4 text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Marina Heights</div>
+                        <!-- <div class="font-normal text-body">neil.sims@flowbite.com</div> -->
+                    </div>  
+                </th>
+                <td class="px-6 py-4">
+                    Apartments
+                </td>
+                <td class="px-6 py-4">
+                    
+                        
+  <div class="h-4 w-40 rounded-full bg-[#F3E2C7]">
+    <div class="h-full rounded-full bg-[#176B60] text-white text-xs" style="width: 96%"> 96%</div>
+  </div>
+
+                    
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#DCE8DE] px-3 py-1 text-xs font-medium text-[#145A50]">
+  Healthy
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+              
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                   
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Lakeview Residency</div>
+                        <!-- <div class="font-normal text-body">bonnie@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    Apartments
+                </td>
+                <td class="px-6 py-4">
+                    <div class="h-4 w-40 rounded-full bg-[#F3E2C7]">
+    <div class="h-full rounded-full bg-[#176B60] text-white text-xs" style="width: 94%"> 94%</div>
+  </div>
+
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#DCE8DE] px-3 py-1 text-xs font-medium text-[#145A50]">
+  Healthy
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+                
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Palm Grove Villas</div>
+                        <!-- <div class="font-normal text-body">jese@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    Villas
+                </td>
+                <td class="px-6 py-4">
+                    <div class="h-4 w-40 rounded-full bg-[#F3E2C7]">
+    <div class="h-full rounded-full bg-[#176B60] text-white text-xs" style="width: 91%"> 91%</div>
+  </div>
+
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#DCE8DE] px-3 py-1 text-xs font-medium text-[#145A50]">
+  Healthy
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+                
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Sunrise Apartments</div>
+                        <!-- <div class="font-normal text-body">thames@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    Apartments
+                </td>
+                <td class="px-6 py-4">
+                    <div class="h-4 w-40 rounded-full bg-[#F3E2C7]">
+    <div class="h-full rounded-full bg-[#428863] text-white text-xs" style="width: 83%"> 83%</div>
+  </div>
+
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#F3E2C7] px-3 py-1 text-xs font-medium text-[#7A4E0B]">
+  Watch
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+               
+                </td>
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Green Arcade</div>
+                        <!-- <div class="font-normal text-body">leslie@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    Commercial
+                </td>
+                <td class="px-6 py-4">
+                    <div class="h-4 w-40 rounded-full bg-[#F3E2C7]">
+    <div class="h-full rounded-full bg-[#8B3A55] text-white text-xs" style="width: 68%"> 68%</div>
+  </div>
+                </td>
+                <td class="px-6 py-4">
+                   <span class="rounded-full bg-[#F1D9E0] px-3 py-1 text-xs font-medium text-[#8B3A55]">
+  Low
+</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+    </div>
+    <div class="hidden p-4" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+       <div class="grid w-full grid-cols-1 items-start gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
+          <div class="flex w-full flex-col gap-3">
+ <div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"> <rect width="48" height="48" rx="12" fill="#EFE6DA"/> <g transform="translate(12 12)" stroke="#2B2326" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"> <path d="M3 10.5 12 3l9 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9.5 21v-6h5v6"/> </g></svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Total Revenue</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">₹1.92 Cr</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">vs ₹1.91Cr last year</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm ">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+    <path d="M3 21h18"/>
+    <path d="M9.5 8h1M13.5 8h1M9.5 12h1M13.5 12h1"/>
+    <path d="M10 21v-4h4v4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Best Month</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">Aug-₹17.0L </h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">Hoghest in last 2 months</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M6 12h.01M18 12h.01"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Monthly rent collected</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">45.80 Lakhs</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+6.2% vs september</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#F3E1E6"/>
+  <g transform="translate(12 12)" stroke="#B5707F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>
+    <path d="m15 5 4 4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Revenue Growth</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]"> +12.4%</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]"> Compared to the previous 6 months</p>
+   </div>
+</div>
+</div>
+
+      
+       <div class="min-w-0 w-full">
+         <!-- analyics..........  -->
+          
+<div class="w-full rounded-2xl border border-[#E6DCCF] bg-white p-5 shadow-sm">
+  <div class="flex justify-between items-start">
+    <div>
+      <div>
+  <h2 class="font-['Fraunces'] text-xl font-semibold text-[#392630]">
+    Monthly Revenue Trend
+  </h2>
+  <p class="mt-1 text-sm text-[#7A6A70]">
+    Rental income over the last 6 months
+  </p>
+</div>
+    </div>
+
+    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
+      12%
+    </div>
+  </div>
+  <div id="area-chart"></div>
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="lastDaysdropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        View Report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+       </div>
+
+
+</div>
+    </div>
+    <div class="hidden p-4 rounded-base bg-neutral-secondary-soft" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+       <!-- cards  -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 items-start ">
+ <div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none"> <rect width="48" height="48" rx="12" fill="#EFE6DA"/> <g transform="translate(12 12)" stroke="#2B2326" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"> <path d="M3 10.5 12 3l9 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9.5 21v-6h5v6"/> </g></svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Total tenants</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">248</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+12% vs previous 6 months</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+    <path d="M3 21h18"/>
+    <path d="M9.5 8h1M13.5 8h1M9.5 12h1M13.5 12h1"/>
+    <path d="M10 21v-4h4v4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Active Tenants</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">232 <span class="font-normal font-normal">/46</span></h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+12% vs previous 6 month</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#DCEBE4"/>
+  <g transform="translate(12 12)" stroke="#1B6B5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <path d="M6 12h.01M18 12h.01"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">New Tenant</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">24</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+32% vs previous 6 month</p>
+   </div>
+</div>
+
+<div class="flex items-center gap-4 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+   <div class="shrink-0">
+      <div><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#F3E1E6"/>
+  <g transform="translate(12 12)" stroke="#B5707F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>
+    <path d="m15 5 4 4"/>
+  </g>
+</svg>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm text-[#7A6A70]">Retention Rate</p>
+    <h5 class="text-3xl font-semibold tracking-tight text-[#392630]">84%</h5>
+    <p class="mt-1 text-xs font-medium text-[#176B60]">+6% vs previous 6 month</p>
+   </div>
+</div>
+</div>
+
+<!-- graph -->
+<div class="w-full rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm mt-5">
+  <div class="flex justify-between">
+    <div>
+      <h5 class="font-['Fraunces'] text-xl font-semibold text-[#392630]">
+  Tenant Growth
+</h5>
+<p class="mt-1 text-sm text-[#7A6A70]">
+  Total tenants over the last six months
+</p>
+    </div>
+    <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/></svg>
+      12%
+    </div>
+  </div>
+  <div id="data-labels-chart" class="mt-4 w-full"></div>
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <button id="dropdownLastDays13Button" data-dropdown-toggle="LastDays13dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div id="LastDays13dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays13Button">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div>
+      <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Progress report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+    
+    
+    
+    
+    
+    
+    
+      </div>
+    <div class="hidden rounded-2xl bg-[#F7F2EC] p-4 sm:p-5"
+     id="contacts"
+     role="tabpanel"
+     aria-labelledby="contacts-tab">
+        
+      <div class="grid w-full grid-cols-1 items-start gap-5 xl:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        
+<div class="min-w-0 rounded-2xl border border-[#D9C9D0] bg-white p-5 shadow-sm">
+
+  <div class="flex justify-between items-start w-full ">
+      <div class="flex-col items-center">
+        <div class="flex items-center mb-1">
+          <h5 class="font-['Fraunces'] text-xl font-semibold text-[#392630]">
+  Expense Breakdown
+</h5>
+          <svg data-popover-target="traffic-info" data-popover-placement="bottom" class="w-4 h-4 text-body hover:text-heading cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <div data-popover id="traffic-info" role="tooltip" class="absolute z-10 p-3 invisible inline-block text-sm text-body transition-opacity duration-300 bg-neutral-primary-soft border border-default rounded-base shadow-xs opacity-0 w-72">
+              <div>
+                  <h3 class="font-semibold text-heading mb-2">Activity growth - Incremental</h3>
+                  <p class="mb-4">Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
+                  <h3 class="font-semibold text-heading mb-2">Calculation</h3>
+                  <p class="mb-4">For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
+                  <a href="#" class="flex items-center font-medium text-fg-brand hover:underline">
+                      Read more 
+                      <svg class="w-4 h-4 ms-1 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+                  </a>
+              </div>
+              <div data-popper-arrow></div>
+          </div>
+      </div>
+      <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="inline-flex items-center text-fg-brand font-medium hover:underline">
+        31 Nov - 31 Dev 
+        <svg class="w-4.5 h-4.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button>
+      <div id="dateRangeDropdown" class="z-10 hidden bg-neutral-primary-soft bg-[#F7F2EC] rounded-base shadow-xs border border-default w-80 lg:w-112">
+        <div id="date-range-picker" date-rangepicker class="flex items-center p-2">
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
+            </div>
+            <input id="datepicker-range-start" name="start" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Start date">
+          </div>
+          <span class="mx-4 text-body">to</span>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
+            </div>
+            <input id="datepicker-range-end" name="end" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="End date">
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end items-center">
+      <!-- <button id="widgetDropdownButton" data-dropdown-toggle="widgetDropdown" data-dropdown-placement="bottom" type="button" class="inline-flex items-center justify-center text-body bg-neutral-primary-soft hover:bg-neutral-tertiary hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm w-9 h-9 focus:outline-none">
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M6 12h.01m6 0h.01m5.99 0h.01"/></svg>
+        <span class="sr-only">Open dropdown</span>
+      </button> -->
+      <div id="widgetDropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="widgetDropdownButton">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z"/></svg>
+                Edit widget
+              </a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"/></svg>
+                Download data
+              </a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8v8m0-8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8-8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 0a4 4 0 0 1-4 4h-1a3 3 0 0 0-3 3"/></svg>
+                Add to repository
+              </a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">
+                <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/></svg>
+                Delete widget
+              </a>
+            </li>
+          </ul>
+    </div>
+  </div>
+  </div>
+
+  <!-- Line Chart -->
+  <div class="py-6" id="pie-chart"></div>
+
+  <div class="grid grid-cols-1 items-center border-light border-t justify-between">
+    <div class="flex justify-between items-center pt-4 md:pt-6">
+      <!-- Button -->
+      <!-- <button id="dropdownLastDays4Button" data-dropdown-toggle="LastDays4dropdown" data-dropdown-placement="bottom" class="text-sm font-medium text-body hover:text-heading text-center inline-flex items-center" type="button">
+          Last 7 days
+          <svg class="w-4 h-4 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+      </button> -->
+      <!-- Dropdown menu -->
+      <!-- <div id="LastDays4dropdown" class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44">
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownLastDays4Button">
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Today</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 30 days</a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 90 days</a>
+            </li>
+          </ul>
+      </div> -->
+      <!-- <a href="#" class="inline-flex items-center text-fg-brand bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none">
+        Traffic Report
+        <svg class="w-4 h-4 ms-1.5 -me-0.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+      </a> -->
+    </div>
+  </div>
+
+</div>
+
+<div class="min-w-0 overflow-x-auto rounded-2xl border border-[#D9C9D0] bg-white shadow-sm">
+    <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4">
+        <div class="flex">
+         <h1 class="font-['Fraunces'] text-xl font-semibold text-[#392630]"> Property-wise Expense Comparison<p class="mt-1  text-sm text-[#7A6A70]">Compare costs against rental income.</p></h1>
+        <!-- <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-flex items-center justify-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none gap-10 ml-209 h-10 mt-2" type="button">
+            Date Range
+            <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+        </button> -->
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden bg-[#faf8f5] border border-default-medium rounded-base shadow-lg w-32">
+            <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">This month</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 3 months</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Last 6 months</a>
+            </li>
+            <li>
+                <a href="#" class="inline-flex items-center w-full p-2 text-fg-danger hover:bg-neutral-tertiary-medium rounded">Last 12 months</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+        <label for="input-group-1" class="sr-only">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+            </div>
+            <input type="text" id="input-group-1" class="block w-full max-w-96 ps-9 pe-3 py-2 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search">
+        </div>
+    </div>
+    <table class="w-full text-left text-sm text-[#392630]">
+        <thead class="border-y border-[#E6DCCF] bg-[#EFE6DA] text-sm text-[#392630]">
+            <tr>
+                
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Property Name
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                   Total Expenses
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Rental Income
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Expense/Income
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+               
+                <th scope="row" class="flex items-center px-6 py-4 text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Marina Heights</div>
+                        <!-- <div class="font-normal text-body">neil.sims@flowbite.com</div> -->
+                    </div>  
+                </th>
+                <td class="px-6 py-4">
+                    ₹40,000
+                </td>
+                <td class="px-6 py-4">
+                    
+                        
+  
+                    ₹1,60,000
+                
+
+                    
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#DCE8DE] px-3 py-1 text-xs font-medium text-[#145A50]">
+  25%
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+              
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                   
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Lakeview Residency</div>
+                        <!-- <div class="font-normal text-body">bonnie@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    
+                    ₹32,000
+                
+                </td>
+                <td class="px-6 py-4">
+                    ₹1,32,000
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#DCE8DE] px-3 py-1 text-xs font-medium text-[#145A50]">
+  32%
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+                
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Palm Grove Villas</div>
+                        <!-- <div class="font-normal text-body">jese@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    ₹28,000
+                </td>
+                <td class="px-6 py-4">
+                     ₹82,000
+
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#F1D9E0] px-3 py-1 text-xs font-medium text-[#8B3A55]">
+  35%
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+                
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Sunrise Apartments</div>
+                        <!-- <div class="font-normal text-body">thames@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    ₹60,000
+                </td>
+                <td class="px-6 py-4">
+                   ₹1,02,000
+
+                </td>
+                <td class="px-6 py-4">
+                    <span class="rounded-full bg-[#F3E2C7] px-3 py-1 text-xs font-medium text-[#7A4E0B]">
+  45%
+</span>
+                </td>
+            </tr>
+            <tr class="border-b border-[#EEE5DA] bg-white hover:bg-[#F7F2EC]">
+               
+                </td>
+                <th scope="row" class="flex items-center px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    
+                    <div class="ps-3">
+                        <div class="text-base font-semibold">Green Arcade</div>
+                        <!-- <div class="font-normal text-body">leslie@flowbite.com</div> -->
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    ₹28,000
+                </td>
+                <td class="px-6 py-4">
+                   ₹82,000
+                </td>
+                <td class="px-6 py-4">
+                   <span class="rounded-full bg-[#F1D9E0] px-3 py-1 text-xs font-medium text-[#8B3A55]">
+  30%
+</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+      </div>
+      </div>
+      </div>
+    
+      
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
